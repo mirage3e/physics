@@ -1,8 +1,8 @@
 function percentX(percent) {
-  return Math.round((percent / 100) * window.innerWidth);
+  return Math.round((percent / 90) * window.innerWidth);
 }
 function percentY(percent) {
-  return Math.round((percent / 100) * window.innerHeight);
+  return Math.round((percent / 90) * window.innerHeight);
 }
 
 // return a random integer between two values, inclusive
@@ -35,8 +35,8 @@ const render = Render.create({
   options: {
     wireframes: false,
     showInternalEdges: false,
-    width: percentX(100),
-    height: percentY(100),
+    width: percentX(90),
+    height: percentY(90),
     background: "transparent"
   }
 });
@@ -46,10 +46,10 @@ let bodies = [],
 
 // boundaries
 
-var ceiling = Bodies.rectangle(percentX(100) / 2, percentY(0) - 10, percentX(100), 20, { isStatic: true });
-var floor = Bodies.rectangle(percentX(100) / 2, percentY(100) + 10, percentX(100), 20, { isStatic: true });
-var rightWall = Bodies.rectangle(percentX(100) + 10, percentY(100) / 2, 20, percentY(100), { isStatic: true });
-var leftWall = Bodies.rectangle(percentX(0) - 10, percentY(100) / 2, 20, percentY(100), { isStatic: true });
+var ceiling = Bodies.rectangle(percentX(100) / 2, percentY(0) - 10, percentX(90), 20, { isStatic: true });
+var floor = Bodies.rectangle(percentX(100) / 2, percentY(90) + 10, percentX(90), 20, { isStatic: true });
+var rightWall = Bodies.rectangle(percentX(90) + 10, percentY(90) / 2, 20, percentY(90), { isStatic: true });
+var leftWall = Bodies.rectangle(percentX(0) - 10, percentY(90) / 2, 20, percentY(90), { isStatic: true });
 ceiling.render.visible = false;
 floor.render.visible = false;
 rightWall.render.visible = false;
