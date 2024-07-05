@@ -1,4 +1,3 @@
-<script>
 function percentX(percent) {
   return Math.round((percent / 100) * window.innerWidth);
 }
@@ -278,4 +277,4 @@ window.addEventListener("message", (event) => {
         console.log(`Initial theme is: ${theme}`);
     }
 });
-</script>
+
