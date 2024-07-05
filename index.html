@@ -97,31 +97,7 @@ https://stackoverflow.com/questions/65253422/how-to-use-an-svg-image-in-matter-j
 <!-- partial -->
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   
-<script>
-window.addEventListener("message", (event) => {
-    if (event.data.type === "themeChange") {
-        const theme = event.data.theme
-        document.body.style.background = theme === "dark" ? "#000" : "#fff"
-        // Apply other theme-specific styles as needed
-        console.log(`Theme changed to: ${theme}`)
-    }
-})
 
-// Send a message to the parent window to request the current theme when the iframe loads
-window.addEventListener("load", () => {
-    window.parent.postMessage({ type: "requestTheme" }, "*")
-})
-
-// Listen for the current theme from the parent window
-window.addEventListener("message", (event) => {
-    if (event.data.type === "currentTheme") {
-        const theme = event.data.theme
-        document.body.style.background = theme === "dark" ? "#000" : "#fff"
-        // Apply other theme-specific styles as needed
-        console.log(`Initial theme is: ${theme}`)
-    }
-})
-</script>
 
 <script src='https://cdn.jsdelivr.net/npm/pathseg@1.2.1/pathseg.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/poly-decomp@0.3.0/build/decomp.min.js'></script>
