@@ -77,7 +77,7 @@ function getRandomInt(min, max) {
   const hue = Math.floor(Math.random() * 360); // select a random hue
   const saturation = Math.floor(Math.random() * 30) + 100; // select a saturation between 70 and 100
   const lightness = Math.floor(Math.random() * 10) + 70; // select a lightness between 60 and 70
-  const color = hsl(${hue}, ${saturation}%, ${lightness}%); // create a pastel color with the selected hue, saturation, and lightness
+  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // create a pastel color with the selected hue, saturation, and lightness
   return color;
 }
 
@@ -147,7 +147,7 @@ $('#svg-1').find('path').each(function(i, path) {
   const hue = Math.floor(Math.random() * 360); // select a random hue
   const saturation = Math.floor(Math.random() * 30) + 100; // select a saturation between 70 and 100
   const lightness = Math.floor(Math.random() * 10) + 70; // select a lightness between 60 and 70
-  const color = hsl(${hue}, ${saturation}%, ${lightness}%); // create a pastel color with the selected hue, saturation, and lightness
+  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // create a pastel color with the selected hue, saturation, and lightness
   return color;
 }
 
@@ -177,7 +177,7 @@ function getRandomInt(min, max) {
   const hue = Math.floor(Math.random() * 360); // select a random hue
   const saturation = Math.floor(Math.random() * 30) + 100; // select a saturation between 70 and 100
   const lightness = Math.floor(Math.random() * 10) + 70; // select a lightness between 60 and 70
-  const color = hsl(${hue}, ${saturation}%, ${lightness}%); // create a pastel color with the selected hue, saturation, and lightness
+  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // create a pastel color with the selected hue, saturation, and lightness
   return color;
 }
 
@@ -208,7 +208,7 @@ function getRandomInt(min, max) {
   const hue = Math.floor(Math.random() * 360); // select a random hue
   const saturation = Math.floor(Math.random() * 30) + 100; // select a saturation between 70 and 100
   const lightness = Math.floor(Math.random() * 10) + 70; // select a lightness between 60 and 70
-  const color = hsl(${hue}, ${saturation}%, ${lightness}%); // create a pastel color with the selected hue, saturation, and lightness
+  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // create a pastel color with the selected hue, saturation, and lightness
   return color;
 }
 
@@ -240,7 +240,7 @@ $('#svg-4').find('path').each(function(i, path) {
   const hue = Math.floor(Math.random() * 360); // select a random hue
   const saturation = Math.floor(Math.random() * 30) + 100; // select a saturation between 70 and 100
   const lightness = Math.floor(Math.random() * 10) + 70; // select a lightness between 60 and 70
-  const color = hsl(${hue}, ${saturation}%, ${lightness}%); // create a pastel color with the selected hue, saturation, and lightness
+  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // create a pastel color with the selected hue, saturation, and lightness
   return color;
 }
 
@@ -327,4 +327,5 @@ let mouse = Mouse.create(render.canvas),
           }
       }
     });
+
 Composite.add(world, mouseConstraint);
