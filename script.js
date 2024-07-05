@@ -1,4 +1,4 @@
-function percentX(percent) {
+ function percentX(percent) {
   return Math.round((percent / 100) * window.innerWidth);
 }
 function percentY(percent) {
@@ -72,7 +72,15 @@ let letterSizeHorizontal = 0.8,
 const semiCircles = [
   ...Array(30).fill().map(() => {
     const path = document.querySelector(".semi > path");
-   let randomColor = Math.floor(Math.random()*16777215).toString(16);
+  let randomColor = getRandomInt();
+function getRandomInt(min, max) {
+  const hue = Math.floor(Math.random() * 360); // select a random hue
+  const saturation = Math.floor(Math.random() * 30) + 100; // select a saturation between 70 and 100
+  const lightness = Math.floor(Math.random() * 10) + 70; // select a lightness between 60 and 70
+  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // create a pastel color with the selected hue, saturation, and lightness
+  return color;
+}
+
     let randomScale = Math.random() / 2 + 1.5;
     const semi = Bodies.fromVertices(
       Math.random() * window.innerWidth, // x
@@ -83,8 +91,8 @@ const semiCircles = [
     letterSizeVertical),             
       {
         render: {
-          fillStyle: "#" + randomColor,
-          strokeStyle: "#" + randomColor,
+          fillStyle:  randomColor,
+          strokeStyle:randomColor,
           lineWidth: 2
         }
       }, // options
@@ -131,11 +139,18 @@ let oY = percentY(20);
 
 
 
-// C
+// D
 
 $('#svg-1').find('path').each(function(i, path) {
-  
-  let randomColor = Math.floor(Math.random()* 16777215).toString(16);
+  let randomColor = getRandomInt();
+  function getRandomInt(min, max) {
+  const hue = Math.floor(Math.random() * 360); // select a random hue
+  const saturation = Math.floor(Math.random() * 30) + 100; // select a saturation between 70 and 100
+  const lightness = Math.floor(Math.random() * 10) + 70; // select a lightness between 60 and 70
+  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // create a pastel color with the selected hue, saturation, and lightness
+  return color;
+}
+
   svgOne = Bodies.fromVertices(
    cX,
     cY,
@@ -144,8 +159,8 @@ $('#svg-1').find('path').each(function(i, path) {
     letterSizeHorizontal,
     letterSizeVertical), {
      render: {
-       fillStyle: "#" + randomColor,
-       strokeStyle: "#" + randomColor,
+       fillStyle:  randomColor,
+       strokeStyle:  randomColor,
        lineWidth: 2
      }
     }, true);
@@ -154,11 +169,18 @@ $('#svg-1').find('path').each(function(i, path) {
 
 });
 
-// I
+// A
 
 $('#svg-2').find('path').each(function(i, path) {
-  
-  let randomColor = Math.floor(Math.random()*16777215).toString(16);
+  let randomColor = getRandomInt();
+function getRandomInt(min, max) {
+  const hue = Math.floor(Math.random() * 360); // select a random hue
+  const saturation = Math.floor(Math.random() * 30) + 100; // select a saturation between 70 and 100
+  const lightness = Math.floor(Math.random() * 10) + 70; // select a lightness between 60 and 70
+  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // create a pastel color with the selected hue, saturation, and lightness
+  return color;
+}
+
 
   svgTwo = Bodies.fromVertices(
       iX,
@@ -167,8 +189,8 @@ $('#svg-2').find('path').each(function(i, path) {
     letterSizeHorizontal,
     letterSizeVertical), {
       render: {
-        fillStyle: "#" + randomColor,
-        strokeStyle: "#" + randomColor,
+        fillStyle:  randomColor,
+        strokeStyle:  randomColor,
         lineWidth: 2
       }
     }, true);
@@ -177,11 +199,18 @@ $('#svg-2').find('path').each(function(i, path) {
 
 });
 
-// A
+// N
 
-let randomColorLetterA = Math.floor(Math.random()*16777215).toString(16);
 
 $('#svg-3').find('path').each(function(i, path) {
+let randomColor = getRandomInt();
+function getRandomInt(min, max) {
+  const hue = Math.floor(Math.random() * 360); // select a random hue
+  const saturation = Math.floor(Math.random() * 30) + 100; // select a saturation between 70 and 100
+  const lightness = Math.floor(Math.random() * 10) + 70; // select a lightness between 60 and 70
+  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // create a pastel color with the selected hue, saturation, and lightness
+  return color;
+}
 
   svgThree = Bodies.fromVertices(
     aX,
@@ -190,8 +219,8 @@ $('#svg-3').find('path').each(function(i, path) {
     letterSizeHorizontal,
     letterSizeVertical), {
       render: {
-        fillStyle: "#" + randomColorLetterA,
-        strokeStyle: "#" + randomColorLetterA,
+        fillStyle: randomColor,
+        strokeStyle:  randomColor,
         lineWidth: 1.5
       }
     }, true);
@@ -203,11 +232,17 @@ $('#svg-3').find('path').each(function(i, path) {
 
 
 
-// O
+// G
 
 $('#svg-4').find('path').each(function(i, path) {
-  
-  let randomColor = Math.floor(Math.random()*16777215).toString(16);
+ let randomColor = getRandomInt(); 
+ function getRandomInt(min, max) {
+  const hue = Math.floor(Math.random() * 360); // select a random hue
+  const saturation = Math.floor(Math.random() * 30) + 100; // select a saturation between 70 and 100
+  const lightness = Math.floor(Math.random() * 10) + 70; // select a lightness between 60 and 70
+  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`; // create a pastel color with the selected hue, saturation, and lightness
+  return color;
+}
 
   svgFour = Bodies.fromVertices(
     oX,
@@ -216,8 +251,8 @@ $('#svg-4').find('path').each(function(i, path) {
     letterSizeHorizontal,
     letterSizeVertical), {
       render: {
-        fillStyle: "#" + randomColor,
-        strokeStyle: "#" + randomColor,
+        fillStyle:  randomColor,
+        strokeStyle:  randomColor,
         lineWidth: 1
       }
     }, true);
