@@ -37,13 +37,15 @@ const render = Render.create({
     showInternalEdges: false,
     width: percentX(100),
     height: percentY(100),
-    background: "transparent" // Set background to transparent
+    background: "transparent"
   }
 });
 
-let bodies = [];
+let bodies = [],
+    bgColor = "#F9F9F9";
 
 // boundaries
+
 var ceiling = Bodies.rectangle(percentX(100) / 2, percentY(0) - 10, percentX(100), 20, { isStatic: true });
 var floor = Bodies.rectangle(percentX(100) / 2, percentY(100) + 10, percentX(100), 20, { isStatic: true });
 var rightWall = Bodies.rectangle(percentX(100) + 10, percentY(100) / 2, 20, percentY(100), { isStatic: true });
@@ -57,46 +59,54 @@ bodies.push(floor);
 bodies.push(rightWall);
 bodies.push(leftWall);
 
+
+
 // add all bodies (boundaries and circles) to the world
 Composite.add(world, bodies);
 
+
 let letterSizeHorizontal = 0.8,
     letterSizeVertical = 0.8;
-
 // semicircles
-const semiCircles = Array.from({ length: 30 }, () => {
-  const path = document.querySelector(".semi > path");
-  let randomColor = getRandomColor();
 
-  let randomScale = Math.random() / 2 + 1.5;
-  const semi = Bodies.fromVertices(
-    Math.random() * window.innerWidth, // x
-    Math.random() * window.innerHeight, // y
-    Vertices.scale(Svg.pathToVertices(path, 2), // vertexSets
-      letterSizeHorizontal,
-      letterSizeVertical),             
-    {
-      render: {
-        fillStyle: randomColor,
-        strokeStyle: randomColor,
-        lineWidth: 2
-      }
-    }, // options
-    true, // flag internal
-  );
-  Matter.Body.scale(semi, randomScale, randomScale);
-  return semi;
-});
+const semiCircles = [
+  ...Array(30).fill().map(() => {
+    const path = document.querySelector(".semi > path");
+   let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    let randomScale = Math.random() / 2 + 1.5;
+    const semi = Bodies.fromVertices(
+      Math.random() * window.innerWidth, // x
+      Math.random() * window.innerHeight, // y
+
+      Vertices.scale(Svg.pathToVertices(path, 2), // vertexSets
+        letterSizeHorizontal,
+    letterSizeVertical),             
+      {
+        render: {
+          fillStyle: "#" + randomColor,
+          strokeStyle: "#" + randomColor,
+          lineWidth: 2
+        }
+      }, // options
+      true, // flag internal
+    );
+    const scale = randomScale;
+    Matter.Body.scale(semi, scale, scale);
+    return semi;
+  }),
+];
 
 // add all semicircles to the world
 Composite.add(world, semiCircles);
 
 // SVGs
+
 let vertexSets = [],
     svgOne,
     svgTwo,
     svgThree,
-    svgFour;
+    svgFour,
+    svgFourCounter;
 
 let cX = percentX(20);
 let cY = percentY(20);
@@ -107,39 +117,49 @@ let iY = percentY(30);
 let aX = percentX(60);
 let aY = percentY(20);
 
+let aXLegOne = aX - 43;
+let aYLegOne = aY + 49;
+
+let aXLegTwo = aX + 43;
+let aYLegTwo = aY + 49;
+
 let oX = percentX(50);
 let oY = percentY(20);
 
-// Function to get random color
-function getRandomColor() {
-  const hue = Math.floor(Math.random() * 360);
-  const saturation = Math.floor(Math.random() * 30) + 100;
-  const lightness = Math.floor(Math.random() * 10) + 70;
-  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-}
+// let letterSize = (window.innerWidth / 1000);
 
-// D
-document.querySelectorAll('#svg-1 path').forEach((path) => {
-  let randomColor = getRandomColor();
+
+
+
+// C
+
+$('#svg-1').find('path').each(function(i, path) {
+  
+  let randomColor = Math.floor(Math.random()* 16777215).toString(16);
   svgOne = Bodies.fromVertices(
-    cX,
+   cX,
     cY,
+
     Vertices.scale(Svg.pathToVertices(path, 10), 
     letterSizeHorizontal,
     letterSizeVertical), {
      render: {
-       fillStyle: randomColor,
-       strokeStyle: randomColor,
+       fillStyle: "#" + randomColor,
+       strokeStyle: "#" + randomColor,
        lineWidth: 2
      }
     }, true);
 
   vertexSets.push(svgOne);
+
 });
 
-// A
-document.querySelectorAll('#svg-2 path').forEach((path) => {
-  let randomColor = getRandomColor();
+// I
+
+$('#svg-2').find('path').each(function(i, path) {
+  
+  let randomColor = Math.floor(Math.random()*16777215).toString(16);
+
   svgTwo = Bodies.fromVertices(
       iX,
     iY,
@@ -147,18 +167,22 @@ document.querySelectorAll('#svg-2 path').forEach((path) => {
     letterSizeHorizontal,
     letterSizeVertical), {
       render: {
-        fillStyle: randomColor,
-        strokeStyle: randomColor,
+        fillStyle: "#" + randomColor,
+        strokeStyle: "#" + randomColor,
         lineWidth: 2
       }
     }, true);
 
   vertexSets.push(svgTwo);
+
 });
 
-// N
-document.querySelectorAll('#svg-3 path').forEach((path) => {
-  let randomColor = getRandomColor();
+// A
+
+let randomColorLetterA = Math.floor(Math.random()*16777215).toString(16);
+
+$('#svg-3').find('path').each(function(i, path) {
+
   svgThree = Bodies.fromVertices(
     aX,
     aY,
@@ -166,18 +190,25 @@ document.querySelectorAll('#svg-3 path').forEach((path) => {
     letterSizeHorizontal,
     letterSizeVertical), {
       render: {
-        fillStyle: randomColor,
-        strokeStyle: randomColor,
+        fillStyle: "#" + randomColorLetterA,
+        strokeStyle: "#" + randomColorLetterA,
         lineWidth: 1.5
       }
     }, true);
 
   vertexSets.push(svgThree);
+
 });
 
-// G
-document.querySelectorAll('#svg-4 path').forEach((path) => {
-  let randomColor = getRandomColor(); 
+
+
+
+// O
+
+$('#svg-4').find('path').each(function(i, path) {
+  
+  let randomColor = Math.floor(Math.random()*16777215).toString(16);
+
   svgFour = Bodies.fromVertices(
     oX,
     oY,
@@ -185,14 +216,16 @@ document.querySelectorAll('#svg-4 path').forEach((path) => {
     letterSizeHorizontal,
     letterSizeVertical), {
       render: {
-        fillStyle: randomColor,
-        strokeStyle: randomColor,
+        fillStyle: "#" + randomColor,
+        strokeStyle: "#" + randomColor,
         lineWidth: 1
       }
     }, true);
 
   vertexSets.push(svgFour);
+
 });
+
 
 // add all SVGs to the world
 Composite.add(world, vertexSets);
@@ -207,6 +240,7 @@ const runner = Runner.create();
 Runner.run(runner, engine);
 
 // gravity
+
 let intervalID;
 
 function changeGravity() {
@@ -218,28 +252,36 @@ function changeGravity() {
 let intervalNumber = 1;
 function setGravity() {
   if (intervalNumber === 1) {
+    // console.log("interval " + intervalNumber + ", down");
     world.gravity.y = 0.5;
     world.gravity.x = 0;
     intervalNumber += 1;
   } else if (intervalNumber === 2) {
+    // console.log("interval " + intervalNumber + ", up");
     world.gravity.y = -0.5;
     world.gravity.x = 0;
     intervalNumber += 1;
   } else if (intervalNumber === 3) {
+    // console.log("interval " + intervalNumber + ", right");
     world.gravity.x = 0.5;
     world.gravity.y = 0;
     intervalNumber += 1;
   } else {
+    // console.log("interval " + intervalNumber + ", left");
     world.gravity.x = -0.5;
     world.gravity.y = 0;
     intervalNumber = 1;
   }
 }
 
-// Initial call to change gravity
+// hold in place for testing
+// world.gravity.y = 0;
+// world.gravity.x = 0;
+
 changeGravity();
 
-// Mouse control
+// mouse control
+
 let mouse = Mouse.create(render.canvas),
     mouseConstraint = MouseConstraint.create(engine, {
       mouse: mouse,
@@ -252,29 +294,3 @@ let mouse = Mouse.create(render.canvas),
     });
 
 Composite.add(world, mouseConstraint);
-
-// Handle theme change messages
-window.addEventListener("message", (event) => {
-    if (event.data.type === "themeChange") {
-        const theme = event.data.theme;
-        document.body.style.background = theme === "dark" ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 255, 255, 0.5)";
-        // Apply other theme-specific styles as needed
-        console.log(`Theme changed to: ${theme}`);
-    }
-});
-
-// Request current theme from parent window
-window.addEventListener("load", () => {
-    window.parent.postMessage({ type: "requestTheme" }, "*");
-});
-
-// Listen for the current theme from the parent window
-window.addEventListener("message", (event) => {
-    if (event.data.type === "currentTheme") {
-        const theme = event.data.theme;
-        document.body.style.background = theme === "dark" ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 255, 255, 0.5)";
-        // Apply other theme-specific styles as needed
-        console.log(`Initial theme is: ${theme}`);
-    }
-});
-
