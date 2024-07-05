@@ -327,3 +327,4 @@ let mouse = Mouse.create(render.canvas),
           }
       }
     });
+Composite.add(world, mouseConstraint);
